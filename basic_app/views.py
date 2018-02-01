@@ -7,8 +7,27 @@ from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponse,HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-# Create your views here.
+from django.views.generic import View,ListView,DetailView,CreateView,UpdateView,DeleteView
+from . import models
 
+# Create your views here.
+#class based view
+class CompanyListView(ListView):
+	context_object_name = 'company_list' 
+	model=models.Company
+	template_name = 'basic_app/home.html'
+
+class CompanyDetailView(DetailView):
+    context_object_name = 'company_details'
+    model = models.Company
+    template_name = 'basic_app/companydetails.html'
+
+class CompanyCreateView(CreateView):
+ 	fields=('name','ceoname','location')
+ 	model=models.Company
+ 	  
+
+#Function Based view
 def index(request):
 	return render(request,'basic_app/index.html')
 
@@ -17,7 +36,14 @@ def user_logout(request):
 	logout(request)
 	return HttpResponseRedirect(reverse('index'))
 	
+def about(request):
+	return render(request,'basic_app/about.html')
 
+def contact(request):
+	return render(request,'basic_app/contact.html')
+
+def home(request):
+	return render(request, 'basic_app/home.html')
 
 def user_login(request):
 	if request.method=='POST':
@@ -29,7 +55,7 @@ def user_login(request):
 		if user:
 			if user.is_active:
 				login(request, user)
-				return HttpResponseRedirect(reverse('index'))
+				return HttpResponseRedirect(reverse('home'))
 			else:
 				return HttpResponse("Account not Active")
 		else:

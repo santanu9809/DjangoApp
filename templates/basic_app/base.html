@@ -5,24 +5,41 @@
 	<link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-   <nav class="navbar navbar-defult navbar-static-top">
+   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
    	<div class="container">
-   		<ul class="nav navbar-nav">
-   			<li><a class="navbar-brand" href="{% url 'index' %}"><h3>DjangoAPP</h3></a></li>
-   			<li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
-   			<li><a class="navbar-link" href="{% url 'basic_app:register' %}">Register</a></li>
+   			
+   			
             {% if user.is_authenticated %}
-            <li><a class="navbar-link" href="{% url 'logout' %}">Logout</a></li>
+            <li><a class="navbar-brand" href="{% url 'home' %}"><h3>DjangoAPP</h3></a></li>
+            <ul class="navbar-nav ml-auto">
+            <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>&nbsp
+            <li><a class="navbar-link" href="{% url 'basic_app:about' %}">About</a></li>&nbsp
+            <li><a class="navbar-link" href="{% url 'basic_app:contact' %}">Contact</a></li>&nbsp
+            <li><a class="navbar-link" href="{% url 'logout' %}">Logout</a></li>&nbsp
+            </ul>
             {% else %}
-                <li><a class="navbar-link" href="{% url 'basic_app:user_login' %}">Login</a></li>
+            <li><a class="navbar-brand" href="{% url 'index' %}"><h3>SoftwareWorld</h3></a></li>
+            <ul class="navbar-nav ml-auto">
+                <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>&nbsp
+                <li><a class="navbar-link" href="{% url 'basic_app:register' %}">Register</a></li>&nbsp
+                <li><a class="navbar-link" href="{% url 'basic_app:user_login' %}">Login</a></li>&nbsp
             {% endif %}
    		</ul>
    	</div>
    </nav>
-   <div class="container">
-   	{% block body_block %}
-   		
-   	{% endblock %}
+    <div class="container">
+      {% block body_block %}
+         
+      {% endblock %}
    </div>
+   <p></p><p></p>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+  
 </body>
 </html>

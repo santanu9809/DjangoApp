@@ -1,0 +1,26 @@
+{% extends "basic_app/base.html" %}
+{% block body_block %}
+
+	<div class="container">
+			<div class="jumbotron">
+    <h1>Welcome to the Company Detail Page</h1>
+    <h2>Company Details:</h2>
+    <p>Id_num: {{company_details.id}}</p>
+    <p>Name: {{company_details.name}}</p>
+    <p>CEO: {{company_details.ceoname}}</p>
+    <p>Location: {{company_details.location}}</p>
+    <h3>Employees:</h3>
+
+      {% for employee in company_details.employees.all %}
+        <p>{{employee.name}} who is {{employee.age}} years old.</p>
+      {% endfor %}
+
+  </div>
+  <div class="container">
+    <p><a class='btn btn-warning' href="{% url 'basic_app:update' pk=school_details.pk %}">Update</a></p>
+
+  </div>
+   </div>
+ 
+    
+{% endblock %}

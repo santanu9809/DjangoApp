@@ -1,0 +1,24 @@
+{% extends "basic_app/base.html" %}
+{% block body_block %}
+
+	<div class="container">
+			<div class="jumbotron">
+
+    <h1>Welcome to the List of Company</h1>
+      <ol>
+        {% for company in company_list %}
+          <h4><li><a href="{{company.id}}/">{{company.name}} </a></li></h4>
+        {% endfor %}
+      </ol>
+      </div>    
+   </div>
+   <!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading/Breadcrumbs -->
+      <h2 class="mt-4 mb-3">Services</h2>
+
+     
+      <!-- Image Header -->
+      <img class="img-fluid rounded mb-4" src="http://www.playadelaxe.com/_img/servicio/iconos/house112.png" alt="">
+{% endblock %}
