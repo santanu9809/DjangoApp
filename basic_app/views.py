@@ -5,9 +5,11 @@ from basic_app.forms import UserForm
 #from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponse,HttpResponseRedirect
-from django.urls import reverse
+from django.urls import reverse,reverse_lazy
 from django.contrib.auth.decorators import login_required
-from django.views.generic import View,ListView,DetailView,CreateView,UpdateView,DeleteView
+from django.views.generic import (View,ListView,
+								  DetailView,CreateView,
+								  UpdateView,DeleteView)
 from . import models
 
 # Create your views here.
@@ -25,7 +27,16 @@ class CompanyDetailView(DetailView):
 class CompanyCreateView(CreateView):
  	fields=('name','ceoname','location')
  	model=models.Company
- 	  
+ 	template_name = 'basic_app/companyform.html'  
+
+class CompanyUpdateView(UpdateView):
+    fields = ("name","ceoname")
+    model = models.Company
+    template_name = 'basic_app/companydelete.html'  
+
+class CompanyDeleteView(DeleteView):
+    model = models.Company
+    success_url = reverse_lazy("basic_app:home")
 
 #Function Based view
 def index(request):
