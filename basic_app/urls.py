@@ -8,8 +8,5 @@ urlpatterns=[
 	url(r'^user_login/$', views.user_login,name='user_login'),
 	url(r'^about/$', views.about,name='about'),
 	url(r'^contact/$', views.contact,name='contact'),
-	url(r'^(?P<pk>\d+)/$',views.CompanyDetailView.as_view(),name='detail'),
-	url(r'^create/$', views.CompanyCreateView.as_view(),name='create'),
-	url(r'^update/(?P<pk>\d+)/$',views.CompanyUpdateView.as_view(),name='update'),
-    url(r'^delete/(?P<pk>\d+)/$',views.CompanyDeleteView.as_view(),name='delete'),
+	
 ] 

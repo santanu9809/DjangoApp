@@ -19,24 +19,7 @@ class CompanyListView(ListView):
 	model=models.Company
 	template_name = 'basic_app/home.html'
 
-class CompanyDetailView(DetailView):
-    context_object_name = 'company_details'
-    model = models.Company
-    template_name = 'basic_app/companydetails.html'
 
-class CompanyCreateView(CreateView):
- 	fields=('name','ceoname','location')
- 	model=models.Company
- 	template_name = 'basic_app/companyform.html'  
-
-class CompanyUpdateView(UpdateView):
-    fields = ("name","ceoname")
-    model = models.Company
-    template_name = 'basic_app/companydelete.html'  
-
-class CompanyDeleteView(DeleteView):
-    model = models.Company
-    success_url = reverse_lazy("basic_app:home")
 
 #Function Based view
 def index(request):
