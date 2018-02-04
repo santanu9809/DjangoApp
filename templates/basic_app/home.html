@@ -3,11 +3,24 @@
 
 	<div class="container">
 			<div class="jumbotron">
-
+    <a href="{% url 'basic_app:addcompany' %}" class="btn btn-primary">Add Company</a>
     <h1>Welcome to the List of Company</h1>
       <ol>
         {% for company in company_list %}
+
           <h4><li><a href="{{company.id}}/">{{company.name}} </a></li></h4>
+          <table>
+          <thead>
+            <th>Name</th>
+            <th>CEO Name</th>
+            <th>Location</th>
+          </thead>
+          <tr>
+            <td>{{company.name}}</td>
+            <td>{{company.ceoname}}</td>
+            <td>{{company.location}}</td>
+          </tr>
+        </table>
         {% endfor %}
       </ol>
       </div>    

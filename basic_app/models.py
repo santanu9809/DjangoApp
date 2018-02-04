@@ -13,16 +13,10 @@ class Company(models.Model):
     ceoname = models.CharField(max_length=256)
     location = models.CharField(max_length=256)
     
-
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse("basic_app:addsuccess")
 
 
-class Employee(models.Model):
-    name = models.CharField(max_length=256)
-    age = models.PositiveIntegerField()
-    company = models.ForeignKey(Company,on_delete=models.PROTECT,related_name='employees')
-
-    def __str__(self):
-        return self.name

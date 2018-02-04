@@ -8,5 +8,7 @@ urlpatterns=[
 	url(r'^user_login/$', views.user_login,name='user_login'),
 	url(r'^about/$', views.about,name='about'),
 	url(r'^contact/$', views.contact,name='contact'),
-	
+	url(r'^addcompany/$',views.CompanyAddView.as_view(),name='addcompany'),
+	url(r'^addsuccess/$', views.addsuccess,name='addsuccess')
+
 ] 

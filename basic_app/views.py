@@ -5,11 +5,9 @@ from basic_app.forms import UserForm
 #from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponse,HttpResponseRedirect
-from django.urls import reverse,reverse_lazy
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from django.views.generic import (View,ListView,
-								  DetailView,CreateView,
-								  UpdateView,DeleteView)
+from django.views.generic import View,ListView,DetailView,CreateView
 from . import models
 
 # Create your views here.
@@ -19,7 +17,12 @@ class CompanyListView(ListView):
 	model=models.Company
 	template_name = 'basic_app/home.html'
 
+class CompanyAddView(CreateView):
+	fields=('name','ceoname','location')
+	model=models.Company
 
+def addsuccess(request):
+	return render(request,'basic_app/addsuccess.html')
 
 #Function Based view
 def index(request):
